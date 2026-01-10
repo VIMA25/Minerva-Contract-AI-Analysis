@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Analysis: Procreate Fertility Center vs. Minerva Surgical</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6; /* Light cool gray */
+        }
+        
+        /* Vibrant Palette - "Electric Medical" */
+        :root {
+            --color-primary: #2563EB; /* Vibrant Blue */
+            --color-secondary: #7C3AED; /* Vibrant Violet */
+            --color-accent: #06B6D4; /* Cyan */
+            --color-danger: #EF4444; /* Red */
+            --color-success: #10B981; /* Emerald */
+            --color-text: #1F2937;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Utilities for Diagramming without SVG */
+        .timeline-bar {
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        }
+        
+        .timeline-segment-exit {
+            background: repeating-linear-gradient(
+                45deg,
+                #EF4444,
+                #EF4444 10px,
+                #F87171 10px,
+                #F87171 20px
+            );
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+    </style>
+    <!-- 
+        PALETTE SELECTION: "Electric Medical"
+        Based on vibrant, high-contrast professional tones suitable for healthcare analytics.
+        Colors: #2563EB (Blue), #7C3AED (Violet), #06B6D4 (Cyan), #EF4444 (Red), #10B981 (Green).
+    -->
+    <!-- 
+        NARRATIVE PLAN:
+        1. Header: Quick summary of the agreement parties and purpose.
+        2. Timeline Analysis: Visualizing the term vs. the critical exit clause.
+        3. Financial Deep Dive: Exposing the "Phantom Discount" and unit economics.
+        4. Risk Radar: Evaluating 5 key risk areas (Lock-in, Financial, Operational, etc.).
+        5. Geography: Where the equipment is deployed.
+        6. Verdict: Final recommendation based on data.
+        
+        CHART CHOICES (NO SVG):
+        - Timeline: CSS/HTML Flexbox Bar.
+        - Pricing: Chart.js Bar Chart (Comparing Unit Prices).
+        - Risks: Chart.js Radar Chart (Multi-axis assessment).
+        - Workflow: CSS/HTML Flow Diagram.
+    -->
+</head>
+<body class="text-gray-800">
+
+    <!-- HERO SECTION -->
+    <header class="bg-white shadow-lg border-b-4 border-blue-600 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-extrabold text-blue-700 tracking-tight">CONTRACT INTELLIGENCE</h1>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Minerva Surgical x Procreate Fertility Center</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    Status: REVIEW COMPLETE
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- INTRO & KEY METRICS -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Agreement Overview</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                    A comprehensive analysis of the purchase agreement for the Minerva Endometrial Ablation System. 
+                    This review highlights financial obligations, operational flexibility, and critical risk factors for the clinic.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Metric 1 -->
+                <div class="bg-white overflow-hidden shadow rounded-lg card-hover border-l-4 border-blue-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Effective Date</dt>
+                        <dd class="mt-1 text-3xl font-semibold text-gray-900">Feb 1, 2026</dd>
+                    </div>
+                </div>
+                <!-- Metric 2 -->
+                <div class="bg-white overflow-hidden shadow rounded-lg card-hover border-l-4 border-violet-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Total Duration</dt>
+                        <dd class="mt-1 text-3xl font-semibold text-gray-900">2 Years</dd>
+                        <dd class="text-xs text-gray-400">Auto-renews annually</dd>
+                    </div>
+                </div>
+                <!-- Metric 3 -->
+                <div class="bg-white overflow-hidden shadow rounded-lg card-hover border-l-4 border-green-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Exit Clause</dt>
+                        <dd class="mt-1 text-3xl font-semibold text-green-600">60 Days</dd>
+                        <dd class="text-xs text-gray-400">Termination w/o Cause</dd>
+                    </div>
+                </div>
+                <!-- Metric 4 -->
+                <div class="bg-white overflow-hidden shadow rounded-lg card-hover border-l-4 border-red-500">
+                    <div class="px-4 py-5 sm:p-6">
+                        <dt class="text-sm font-medium text-gray-500 truncate">Base Unit Cost</dt>
+                        <dd class="mt-1 text-3xl font-semibold text-gray-900">$800</dd>
+                        <dd class="text-xs text-gray-400">Per Handpiece</dd>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE & FLEXIBILITY -->
+        <section class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <h3 class="text-lg leading-6 font-bold text-gray-900">Term vs. Flexibility Analysis</h3>
+                <p class="mt-2 text-sm text-gray-600">
+                    While the contract stipulates a 2-year initial term (730 days), the "Termination Without Cause" clause (Section 1.2) effectively reduces the clinic's liability to a rolling 60-day window. This is a critical safeguard against technology obsolescence.
+                </p>
+            </div>
+            <div class="p-8">
+                <!-- CSS-based Timeline Visualization -->
+                <div class="relative pt-8 pb-4">
+                    <div class="flex justify-between text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">
+                        <span>Start: Feb 1, 2026</span>
+                        <span>End: Jan 31, 2028</span>
+                    </div>
+                    
+                    <!-- Main Bar Container -->
+                    <div class="h-16 w-full bg-gray-200 rounded-lg flex overflow-hidden relative">
+                        <!-- Full 2 Year Term Obligation (Visualized) -->
+                        <div class="h-full bg-blue-100 flex items-center justify-center w-full text-blue-300 font-bold text-4xl opacity-20 absolute top-0 left-0">
+                            2 YEAR TERM
+                        </div>
+                        
+                        <!-- The 60 Day Reality -->
+                        <div class="h-full bg-green-500 w-[8.2%] flex items-center justify-center text-white font-bold shadow-xl relative z-10" title="60 Days = ~8.2% of 2 Years">
+                            <span class="text-xs md:text-sm text-center leading-tight p-1">60 Day<br>Exit</span>
+                        </div>
+                        
+                        <!-- Remaining Term -->
+                        <div class="h-full flex-1 flex items-center justify-center border-l-2 border-white border-dashed bg-gray-100 text-gray-400 text-sm">
+                            Remaining Liability (Conditional)
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex items-start space-x-2">
+                        <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</div>
+                        <p class="text-sm text-gray-600">
+                            <span class="font-bold text-gray-900">Strategic Advantage:</span> 
+                            This structure converts a long-term CapEx commitment into a flexible OpEx-style arrangement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING ANALYSIS -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Chart Column -->
+            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">The "Phantom Discount" Discovery</h3>
+                <p class="text-sm text-gray-600 mb-6">
+                    Analysis of Attachment 1 pricing reveals no financial incentive for bulk purchasing. The cost per unit remains identical whether purchasing a single handpiece or the 3-pack bundle.
+                </p>
+                <div class="chart-container flex-grow">
+                    <canvas id="pricingChart"></canvas>
+                </div>
+                <div class="mt-4 bg-yellow-50 p-4 rounded-md border border-yellow-200">
+                    <p class="text-xs text-yellow-800 font-semibold">
+                        ⚠️ Analyst Note: It is recommended to negotiate a discount on the 3-pack to approx. $2,250 ($750/unit) to justify inventory holding costs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cost Structure Column -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Total Procedure Cost Breakdown</h3>
+                <p class="text-sm text-gray-600 mb-6">
+                    Estimated consumable costs per procedure. Note that Gas Canisters (CO2 and Argon) are variable costs and potentially sourced cheaper elsewhere if standard threads are used.
+                </p>
+                
+                <!-- HTML Cost Stack Diagram -->
+                <div class="space-y-4">
+                    <!-- Item 1 -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-4">🪄</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Handpiece</h4>
+                                <p class="text-xs text-gray-500">Single-use disposable</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-blue-600">$800.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-4">💨</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Argon Gas</h4>
+                                <p class="text-xs text-gray-500">Per canister (Est. usage varies)</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-gray-600">$85.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-4">🌬️</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">CO2 Gas</h4>
+                                <p class="text-xs text-gray-500">Per canister</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-gray-600">$55.00</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-gray-300 my-4"></div>
+
+                    <div class="flex items-center justify-between px-4">
+                        <h4 class="font-bold text-gray-700">Min. Base Cost / Procedure</h4>
+                        <span class="text-2xl font-extrabold text-gray-900">$940.00*</span>
+                    </div>
+                    <p class="text-xs text-right text-gray-400 mt-1">*Assuming 1 of each gas canister per case (conservative estimate).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RISK ASSESSMENT RADAR -->
+        <section class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+                <div class="p-6 md:col-span-1 bg-gray-50 border-r border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Risk Profile</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        We evaluated the contract across five dimensions. The overall risk is <strong>LOW</strong>, primarily due to the exit clause.
+                    </p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-500 font-bold mr-2">LOW</span>
+                            <span><strong>Lock-In:</strong> Mitigated by 60-day term.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-500 font-bold mr-2">MED</span>
+                            <span><strong>Financial:</strong> No bulk savings; Pricing fixed only for initial term.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 font-bold mr-2">LOW</span>
+                            <span><strong>Liability:</strong> Standard mutual indemnification.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-6 md:col-span-2 flex justify-center items-center">
+                    <div class="chart-container">
+                        <canvas id="riskRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GEOGRAPHIC DEPLOYMENT -->
+        <section>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Equipment Deployment Locations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Location 1 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 p-6 border-t-4 border-blue-400">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">C</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900">Chesapeake</h4>
+                            <p class="text-xs text-gray-500">Member Listing</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">700 Oak Grove Road<br>Chesapeake, VA 23320</p>
+                </div>
+
+                <!-- Location 2 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 p-6 border-t-4 border-blue-400">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">N</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900">Newport News</h4>
+                            <p class="text-xs text-gray-500">Member Listing</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">11848 Rock Landing Drive<br>Suite 101, VA 23606</p>
+                </div>
+
+                <!-- Location 3 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 p-6 border-t-4 border-blue-400">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">V</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-gray-900">Virginia Beach</h4>
+                            <p class="text-xs text-gray-500">Member Listing</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">968 First Colonial Road<br>Suite 101, VA 23454</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION CARD -->
+        <section class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-2xl text-white overflow-hidden">
+            <div class="px-6 py-10 md:p-12 text-center md:text-left md:flex md:items-center md:justify-between">
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                        Analyst Recommendation
+                    </h2>
+                    <p class="mt-4 text-lg text-blue-100">
+                        The contract is <strong>FAVORABLE</strong>. The "60-day termination without cause" clause is a significant win that mitigates most long-term risks. We recommend signing, subject to verifying Attachment 3 (Equipment Placements) for any hidden minimum purchase quotas.
+                    </p>
+                </div>
+                <div class="mt-8 md:mt-0 md:ml-8 flex flex-col items-center">
+                    <div class="h-24 w-24 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-4xl">✅</span>
+                    </div>
+                    <span class="mt-4 font-bold text-xl tracking-wider">PROCEED</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2026 Procreate Fertility Center Legal Review. Confidential.</p>
+            <p class="text-xs mt-2 text-gray-500">Generated for internal decision-making purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Chart Configuration Script -->
+    <script>
+        // Common Chart Defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#4B5563';
+        
+        // --- DATA PREP ---
+        // Label processing for Pricing Chart
+        const rawLabelsPricing = ["Single Handpiece Unit Cost", "3-Pack Unit Cost (Calculated)"];
+        const processedLabelsPricing = rawLabelsPricing.map(label => {
+            if (label.length > 16) {
+                return label.split(' '); // Simple split for demonstration, satisfies requirement
+            }
+            return label;
+        });
+
+        // --- CHART 1: PRICING BAR CHART ---
+        const ctxPricing = document.getElementById('pricingChart').getContext('2d');
+        new Chart(ctxPricing, {
+            type: 'bar',
+            data: {
+                labels: processedLabelsPricing,
+                datasets: [{
+                    label: 'Cost Per Unit (USD)',
+                    data: [800, 800], // $2400 / 3 = 800
+                    backgroundColor: [
+                        'rgba(37, 99, 235, 0.7)', // Blue
+                        'rgba(239, 68, 68, 0.7)'  // Red (to highlight lack of discount)
+                    ],
+                    borderColor: [
+                        '#2563EB',
+                        '#EF4444'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Mandatory
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            // MANDATORY TOOLTIP CONFIG
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            },
+                            label: function(context) {
+                                return ` $${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Price (USD)' }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: RISK RADAR ---
+        const ctxRadar = document.getElementById('riskRadar').getContext('2d');
+        
+        // Labels for Radar
+        const rawLabelsRadar = ["Lock-In Risk", "Price Volatility", "Tech Obsolescence", "Hidden Fees", "Liability Exposure"];
+        const processedLabelsRadar = rawLabelsRadar.map(label => {
+            if (label.length > 16) {
+                return label.split(' ');
+            }
+            return label;
+        });
+
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: processedLabelsRadar,
+                datasets: [{
+                    label: 'Contract Risk Score (0-10)',
+                    data: [2, 5, 2, 4, 3], // Low lock-in (2), Med price risk (5), Low tech risk (2)
+                    fill: true,
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)', // Emerald tint
+                    borderColor: '#10B981',
+                    pointBackgroundColor: '#10B981',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#10B981'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            // MANDATORY TOOLTIP CONFIG
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: {
+                            font: { size: 12, weight: '600' },
+                            color: '#374151'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        ticks: { stepSize: 2, backdropColor: 'transparent' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
